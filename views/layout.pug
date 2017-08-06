@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src='//code.jquery.com/jquery-3.2.1.min.js')
+
+        script.
+            function sendSearch() {
+                console.log('on change')
+                $.ajax({
+                    type: 'POST',
+                    url: '/search',
+                    data: $('#search').val(),
+                    success: function (res) {
+                        console.log('in success')
+                        $('#res').text(res)
+                    }
+                })
+            }
+
+    body
+        block content
